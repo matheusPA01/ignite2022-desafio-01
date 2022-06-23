@@ -1,0 +1,95 @@
+/* Submit new task style */
+
+.createNewTask {
+  display: flex;
+  justify-content: center;
+}
+
+.createNewTask form {
+  display: flex;
+
+  margin-top: -1.625rem;
+}
+
+.createNewTask form input[type=text] {
+  width: 43.875rem;
+
+  margin-right: 0.5rem;
+  border-radius: 6px;
+  border: 0;
+
+  background: var(--gray-500);
+
+  text-indent: 1rem;
+  color: var(--gray-100);
+}
+
+.createNewTask form input[type=text]:focus {
+  border: 1px solid var(--purple-400);
+}
+
+.createNewTask form button {
+  padding: 1rem;
+  border-radius: 6px;
+  border: 0;
+
+  color: var(--gray-100);
+  background: var(--blue-400);
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+
+  transition: background .2s;
+}
+
+.createNewTask form button:hover {
+  background: var(--blue-200);
+}
+
+.createNewTask form button img {
+  margin-left: 0.5rem;
+}
+
+/* Task List Style */
+.createdTasksList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 50.125rem;
+  /* é o tamanho do input */
+  margin: 0 auto;
+
+  margin-top: 4rem;
+}
+
+.createdTasksList ul {
+  list-style: none;
+  width: 100%;
+}
+
+.createdTasksList .tasksSummary {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.createdTasksList .tasksSummary p:first-child {
+  color: var(--blue-200);
+  font-weight: 700;
+}
+
+.createdTasksList .tasksSummary p:nth-child(2) {
+  color: var(--purple-200);
+  font-weight: 700;
+}
+
+.createdTasksList .tasksSummary p span {
+  margin-left: 0.5rem;
+
+  background-color: var(--gray-400);
+  color: var(--gray-100);
+  border-radius: 16px;
+  padding: 0.125rem 0.5rem;
+}
