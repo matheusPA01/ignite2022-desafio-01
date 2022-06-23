@@ -4,6 +4,7 @@ import { ChangeEvent, FormEvent, useState, useEffect } from 'react';
 import styles from './Tasks.module.css';
 
 import plusIcon from '../assets/plus.svg'
+import { EmptyTask } from './EmptyTask';
 
 interface Task {
   id: number;
@@ -54,51 +55,87 @@ export function Tasks() {
     setTasks(deleteTask);
   }
 
-  return (
-    <main>
-      <div className={styles.createNewTask}>
-        <form>
-          <input
-            type="text"
-            id="sz"
-            placeholder="Adicione uma nova tarefa"
-            onChange={handleTaskContent}
-            value={taskContent}
-          />
-          <label htmlFor="sz" />
+  if (tasks.length > 0) {
+    return (
+      <main>
+        <div className={styles.createNewTask}>
+          <form>
+            <input
+              type="text"
+              id="sz"
+              placeholder="Adicione uma nova tarefa"
+              onChange={handleTaskContent}
+              value={taskContent}
+            />
+            <label htmlFor="sz" />
 
-          <button
-            type="submit"
-            onClick={handleCreateNewTask}
-          >
-            Criar
-            <img src={plusIcon} alt="Plus icon" />
-          </button>
-        </form>
-      </div>
-
-      <div className={styles.createdTasksList}>
-        <div className={styles.tasksSummary}>
-          <p>Tarefas Criadas <span>{tasks.length}</span></p>
-          <p>Concluídas <span>{completedTaskCount} de {tasks.length}</span></p>
+            <button
+              type="submit"
+              onClick={handleCreateNewTask}
+            >
+              Criar
+              <img src={plusIcon} alt="Plus icon" />
+            </button>
+          </form>
         </div>
-        <ul>
-          {
-            tasks.map(task => {
-              return (
-                <Task
-                  key={task.content}
-                  id={task.id}
-                  content={task.content}
-                  isCompleted={task.isCompleted}
-                  handleToggleTask={handleToggleTaskCompleted}
-                  deleteTask={deleteTask}
-                />
-              )
-            })
-          }
-        </ul>
-      </div>
-    </main>
-  )
+
+        <div className={styles.createdTasksList}>
+          <div className={styles.tasksSummary}>
+            <p>Tarefas Criadas <span>{tasks.length}</span></p>
+            <p>Concluídas <span>{completedTaskCount} de {tasks.length}</span></p>
+          </div>
+          <ul>
+            {
+              tasks.map(task => {
+                return (
+                  <Task
+                    key={task.content}
+                    id={task.id}
+                    content={task.content}
+                    isCompleted={task.isCompleted}
+                    handleToggleTask={handleToggleTaskCompleted}
+                    deleteTask={deleteTask}
+                  />
+                )
+              })
+            }
+          </ul>
+        </div>
+      </main>
+    )
+  } else {
+    return (
+      <main>
+        <div className={styles.createNewTask}>
+          <form>
+            <input
+              type="text"
+              id="sz"
+              placeholder="Adicione uma nova tarefa"
+              onChange={handleTaskContent}
+              value={taskContent}
+            />
+            <label htmlFor="sz" />
+
+            <button
+              type="submit"
+              onClick={handleCreateNewTask}
+            >
+              Criar
+              <img src={plusIcon} alt="Plus icon" />
+            </button>
+          </form>
+        </div>
+
+        <div className={styles.createdTasksList}>
+          <div className={styles.tasksSummary}>
+            <p>Tarefas Criadas <span>{tasks.length}</span></p>
+            <p>Concluídas <span>{completedTaskCount} de {tasks.length}</span></p>
+          </div>
+        </div>
+
+        <EmptyTask />
+      </main>
+    )
+  }
 }
