@@ -1,0 +1,25 @@
+.tasksSummary {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.tasksSummary p:first-child {
+  color: var(--blue-200);
+  font-weight: 700;
+}
+
+.tasksSummary p:nth-child(2) {
+  color: var(--purple-200);
+  font-weight: 700;
+}
+
+.tasksSummary p span {
+  margin-left: 0.5rem;
+
+  background-color: var(--gray-400);
+  color: var(--gray-100);
+  border-radius: 16px;
+  padding: 0.125rem 0.5rem;
+}
