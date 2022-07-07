@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState, useEffect } from 'react';
+import { ChangeEvent, FormEvent, useState, useEffect, useId } from 'react';
 
 import styles from './Tasks.module.css';
 
@@ -18,6 +18,8 @@ export function Tasks() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [taskContent, setTaskContent] = useState('');
   const [completedTaskCount, setCompletedTaskCount] = useState(0);
+
+  const uniqueId = useId();
 
   useEffect(() => {
     setCompletedTaskCount(tasks.filter(task => task.isCompleted).length)
@@ -75,7 +77,7 @@ export function Tasks() {
               tasks.map(task => {
                 return (
                   <Task
-                    key={task.content}
+                    key={uniqueId}
                     id={task.id}
                     content={task.content}
                     isCompleted={task.isCompleted}
