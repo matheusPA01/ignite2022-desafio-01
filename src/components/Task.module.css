@@ -10,7 +10,7 @@
 }
 
 .createdTaskListItem+.createdTaskListItem {
-  margin-top: 0.75rem;
+  margin: 0.75rem 0;
 }
 
 .createdTaskListItem button {
